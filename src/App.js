@@ -5,18 +5,18 @@ import Timer from './Timer'
 class App extends Component {
 
   //no props being used here, so we can use the shorthand declaration of state
-  state = {
-    timerIDs: []
-  }
+
+      state = {
+        timerIDs: [],
+
+}
 
 
   //Your code here:
 
-
-
-
-
-
+componentDidMount() {
+   this.handleAddTimer()
+ }
 
 
 
@@ -37,7 +37,6 @@ class App extends Component {
     );
   }
 
-  // returns array of components written in JSX, mapped from this.state.timerIDs
   renderTimers = () => this.state.timerIDs.map(id => {
     return <Timer key={id} id={id} removeTimer={this.removeTimer} />
   })
@@ -50,13 +49,11 @@ class App extends Component {
   }
 
   // removeTimer updates state, removing any timer that matches the provided author
-  removeTimer = id => {
+removeTimer = id => {
     this.setState(prevState => ({
       timerIDs: prevState.timerIDs.filter(timer_id => timer_id !== id)
     }))
   }
-
-
 }
 
 export default App;
